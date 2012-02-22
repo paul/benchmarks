@@ -23,13 +23,6 @@ class PlainModel
 
 end
 
-class HashModel
-  def initialize(attributes = {})
-    attrs = {}
-    attrs.merge!(attributes)
-  end
-end
-
 ATTRS = {:id => 1, :title => "Foo", :text => "Bar"}
 
 RBench.run(100_000) do
