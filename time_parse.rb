@@ -28,3 +28,12 @@ RBench.run(TIMES) do
   end
 
 end
+
+__END__
+
+» ruby --version
+ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-darwin11.4.1]
+
+Time.new(...) | Time.at(int) | Time.parse(iso8601) | Time.parse(http) | Time.iso8601(iso8601) | Time.httpdate(http) |
+---------------------------------------------------------------------------------------------------------------------
+        2.666 |        0.028 |               3.933 |            4.218 |                 1.237 |               1.898 |
