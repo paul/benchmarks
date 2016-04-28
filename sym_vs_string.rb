@@ -1,20 +1,24 @@
 
 
 require 'rubygems'
-require 'rbench'
+require 'benchmark/ips'
 
-TIMES = 1_000
 
-SYM = {:foo => "bar"}
-STR = {"foo" => "bar"}
+SYM = :foo
+STR = "foo"
 
-RBench.run(TIMES) do
+SYM_HASH = {:foo => "bar"}
+STR_HASH = {"foo" => "bar"}
 
-  column :sym
-  column :str
+Benchmark.ips do |x|
 
-  report "hash lookup" do
-    sym { SYM[:foo] }
-    str { STR["foo"] }
-  end
+  x.report("symbol #== SYM")     { SYM == SYM   }
+  x.report("symbol #== :foo")    { SYM == :foo  }
+
+  x.report("string #== STR")     { STR == STR   }
+  x.report("string #== \"str\"") { STR == "foo" }
+
+  x.report("symbol hash lookup") { SYM_HASH[SYM] }
+  x.report("string hash lookup") { STR_HASH[STR] }
+
 end
